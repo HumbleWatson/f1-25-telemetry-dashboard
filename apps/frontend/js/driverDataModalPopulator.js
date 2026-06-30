@@ -19,7 +19,7 @@ class DriverModalPopulator {
             // Create table header
             const thead = document.createElement('thead');
             const headerRow = document.createElement('tr');
-            const headers = ['Lap', 'S1', 'S2', 'S3', 'Time', 'Tyre', 'Wear', 'Top Speed'];
+            const headers = [__("common.lap"), __("common.s1"), __("common.s2"), __("common.s3"), __("common.time"), __("common.tyre"), __("common.wear"), __("common.topSpeed")];
 
             headers.forEach(headerText => {
                 const th = document.createElement('th');
@@ -238,13 +238,13 @@ class DriverModalPopulator {
             const thead = document.createElement('thead');
             const headerRow = document.createElement('tr');
             const headers = [
-                'Stint',
-                'Start Lap',
-                'End Lap',
-                'Length',
-                'Tyre',
-                'Tyre Wear',
-                'Tyre Wear/Lap',
+                __("driverModal.stint"),
+                __("driverModal.startLap"),
+                __("driverModal.endLap"),
+                __("driverModal.length"),
+                __("common.tyre"),
+                __("common.wear"),
+                __("driverModal.wearPerLap"),
             ];
 
             headers.forEach(headerText => {
@@ -333,7 +333,7 @@ class DriverModalPopulator {
                         // Create sub-table header
                         const subThead = document.createElement('thead');
                         const subHeaderRow = document.createElement('tr');
-                        const subHeaders = ['Lap', 'Front Left', 'Front Right', 'Rear Left', 'Rear Right'];
+                        const subHeaders = [__("common.lap"), __('driverModal.frontLeft'), __('driverModal.frontRight'), __('driverModal.rearLeft'), __('driverModal.rearRight')];
 
                         subHeaders.forEach(headerText => {
                             const th = document.createElement('th');
@@ -412,7 +412,7 @@ class DriverModalPopulator {
                 const row = tbody.insertRow();
                 const td = document.createElement('td');
                 td.colSpan = 7;
-                td.textContent = 'Tyre Stint History data not yet available';
+                td.textContent = __('driverModal.noTyreStintData');
                 row.appendChild(td);
             }
 
@@ -499,7 +499,7 @@ class DriverModalPopulator {
                         if (perLapInfo.length == 1) {
                             const td = document.createElement('td');
                             td.colSpan = 6;
-                            td.textContent = 'ERS data not available';
+                            td.textContent = __('driverModal.noErsData');
                             row.appendChild(td);
                         }
                         return;
@@ -556,7 +556,7 @@ class DriverModalPopulator {
                 const row = tbody.insertRow();
                 const td = document.createElement('td');
                 td.colSpan = 6;
-                td.textContent = 'ERS data not available';
+                td.textContent = __('driverModal.noErsData');
                 row.appendChild(td);
             }
 
@@ -677,7 +677,7 @@ class DriverModalPopulator {
                 const row = tbody.insertRow();
                 const td = document.createElement('td');
                 td.colSpan = 6;
-                td.textContent = 'Tyre wear prediction data not available';
+                td.textContent = __('driverModal.noWearPredictionData');
                 row.appendChild(td);
             }
 
@@ -820,7 +820,7 @@ class DriverModalPopulator {
                 const row = tbody.insertRow();
                 const td = document.createElement('td');
                 td.colSpan = 6;
-                td.textContent = 'No Warnings or Penalites';
+                td.textContent = __('driverModal.noWarnings');
                 row.appendChild(td);
             }
 
@@ -840,9 +840,9 @@ class DriverModalPopulator {
         const thead = document.createElement('thead');
         const headerRow = document.createElement('tr');
         const headers = [
-          'ID',
-          'Colliding driver',
-          'Lap',
+          __("common.id"),
+          __('driverModal.collidingDriver'),
+          __("common.lap"),
         ];
 
         headers.forEach(headerText => {
@@ -903,7 +903,7 @@ class DriverModalPopulator {
                 this.data["car-setup"] = null;
             }
         }
-        this.showRawDataInTable(tabPane, this.data["car-setup"], "Car setup data not available");
+        this.showRawDataInTable(tabPane, this.data["car-setup"], __('driverModal.noCarSetupData'));
     }
 
     populatePlayerInfoTab(tabPane) {
@@ -936,7 +936,7 @@ class DriverModalPopulator {
                 const row = tbody.insertRow();
                 const td = document.createElement('td');
                 td.colSpan = 2;
-                td.textContent = 'No participant data';
+                td.textContent = __('driverModal.noParticipantData');
                 row.appendChild(td);
             }
 
@@ -962,7 +962,7 @@ class DriverModalPopulator {
                 const row = tbody.insertRow();
                 const td = document.createElement('td');
                 td.colSpan = 2;
-                td.textContent = 'No assists data';
+                td.textContent = __('driverModal.noAssistsData');
                 row.appendChild(td);
             }
 
@@ -976,7 +976,7 @@ class DriverModalPopulator {
     populateRaceControlTab(tabPane) {
         const messages = this.data["race-control"] ?? [];
         if (messages.length === 0) {
-            this.populateDataNotAvailableMessage(tabPane, "Race Control Messages data not available");
+            this.populateDataNotAvailableMessage(tabPane, __('driverModal.noRaceControlData'));
             return;
         }
 
@@ -998,24 +998,24 @@ class DriverModalPopulator {
 
         // Array of tabs with ID and label
         const tabs = [
-            { id: 'lap-times', label: 'Lap Times' },
-            { id: 'fuel-usage', label: 'Fuel Usage' },
-            { id: 'tyre-stint-history', label: 'Tyre Stint History' },
-            { id: 'ers-history', label: 'ERS Usage' },
-            { id: 'car-damage', label: 'Car Damage' },
-            { id: 'warns-pens-info', label: 'Warns/Pens' },
-            { id: 'collisions-info', label: 'Collisions' },
-            { id: 'tyre-sets', label: 'Tyre Sets' },
-            { id: 'player-info', label: 'Player Info' },
-            { id: 'race-control', label: 'Race Control' },
+            { id: 'lap-times', label: __('driverModal.lapTimes') },
+            { id: 'fuel-usage', label: __('driverModal.fuelUsage') },
+            { id: 'tyre-stint-history', label: __('driverModal.tyreStintHistory') },
+            { id: 'ers-history', label: __('driverModal.ersUsage') },
+            { id: 'car-damage', label: __('driverModal.carDamage') },
+            { id: 'warns-pens-info', label: __('driverModal.warnsPens') },
+            { id: 'collisions-info', label: __('driverModal.collisions') },
+            { id: 'tyre-sets', label: __('driverModal.tyreSets') },
+            { id: 'player-info', label: __('driverModal.playerInfo') },
+            { id: 'race-control', label: __('driverModal.raceControl') },
         ];
 
         if ('car-setup' in this.data) {
-            tabs.push({ id: 'car-setup', label: 'Car Setup' });
+            tabs.push({ id: 'car-setup', label: __('driverModal.carSetup') });
         }
 
         if (this.tyreWearPredictionsAvailable) {
-            tabs.push({ id: 'tyre-wear-prediction', label: 'Tyre Wear Prediction' });
+            tabs.push({ id: 'tyre-wear-prediction', label: __('driverModal.tyreWearPrediction') });
         }
 
         // Sort tabs alphabetically based on the label
@@ -1181,8 +1181,8 @@ class DriverModalPopulator {
             const thead = document.createElement('thead');
             const headerRow = document.createElement('tr');
             const headers = [
-                'Field',
-                'Value',
+                __("common.field"),
+                __("common.value"),
             ];
 
             headers.forEach(headerText => {
@@ -1226,7 +1226,7 @@ class DriverModalPopulator {
     }
 
     populateTelemetryDisabledMessage(tabPane) {
-        this.populateDataNotAvailableMessage(tabPane, 'Telemetry data is not available');
+        this.populateDataNotAvailableMessage(tabPane, __('driverModal.telemetryDisabled'));
     }
 
     populateDataNotAvailableMessage(tabPane, text) {
