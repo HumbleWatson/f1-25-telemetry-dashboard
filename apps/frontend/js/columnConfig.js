@@ -11,46 +11,46 @@ class ColumnConfig {
     static CUSTOM_PRESET_KEY = 'driver-view-custom-preset';
 
     static COLUMN_GROUPS = [
-        { id: 'delta',           label: 'Delta / Gap to Leader' },
-        { id: 'ers',             label: 'ERS' },
-        { id: 'warns-pens',     label: 'Warnings & Penalties' },
-        { id: 'best-lap',       label: 'Best Lap' },
-        { id: 'last-lap',       label: 'Last Lap' },
-        { id: 'current-lap',    label: 'Current Lap' },
-        { id: 'tyre-info',      label: 'Tyre Info', children: [
-            { id: 'tyre-compound',   label: 'Compound & Wear' },
-            { id: 'tyre-age',        label: 'Age & Pits' },
-            { id: 'tyre-pit-rejoin', label: 'Pit Rejoin' },
-            { id: 'tyre-temps',      label: 'Temps' },
+        { id: 'delta',           label: () => __('columnConfig.delta') },
+        { id: 'ers',             label: () => __('columnConfig.ers') },
+        { id: 'warns-pens',     label: () => __('columnConfig.warnsPens') },
+        { id: 'best-lap',       label: () => __('columnConfig.bestLap') },
+        { id: 'last-lap',       label: () => __('columnConfig.lastLap') },
+        { id: 'current-lap',    label: () => __('columnConfig.currentLap') },
+        { id: 'tyre-info',      label: () => __('columnConfig.tyreInfo'), children: [
+            { id: 'tyre-compound',   label: () => __('columnConfig.tyreCompound') },
+            { id: 'tyre-age',        label: () => __('columnConfig.tyreAge') },
+            { id: 'tyre-pit-rejoin', label: () => __('columnConfig.tyrePitRejoin') },
+            { id: 'tyre-temps',      label: () => __('columnConfig.tyreTemps') },
         ]},
-        { id: 'wear-prediction', label: 'Wear Prediction' },
-        { id: 'damage',         label: 'Damage' },
-        { id: 'fuel',           label: 'Fuel' },
+        { id: 'wear-prediction', label: () => __('columnConfig.wearPrediction') },
+        { id: 'damage',         label: () => __('columnConfig.damage') },
+        { id: 'fuel',           label: () => __('columnConfig.fuel') },
     ];
 
     static PRESETS = [
         {
-            id: 'full-race', emoji: '🏁', label: 'Full Race',
+            id: 'full-race', emoji: '🏁', label: () => __('columnConfig.presetFullRace'),
             visible: null // all on
         },
         {
-            id: 'racer', emoji: '🎮', label: 'Racer',
+            id: 'racer', emoji: '🎮', label: () => __('columnConfig.presetRacer'),
             visible: ['delta', 'tyre-info', 'tyre-compound', 'tyre-age', 'last-lap', 'fuel']
         },
         {
-            id: 'strategist', emoji: '📊', label: 'Strategist',
+            id: 'strategist', emoji: '📊', label: () => __('columnConfig.presetStrategist'),
             visible: ['delta', 'tyre-info', 'tyre-compound', 'tyre-age', 'tyre-pit-rejoin', 'tyre-temps', 'wear-prediction', 'fuel', 'best-lap']
         },
         {
-            id: 'pace-hunter', emoji: '⚔️', label: 'Pace Hunter',
+            id: 'pace-hunter', emoji: '⚔️', label: () => __('columnConfig.presetPaceHunter'),
             visible: ['delta', 'best-lap', 'last-lap', 'current-lap', 'ers']
         },
         {
-            id: 'damage-watch', emoji: '🔧', label: 'Damage Watch',
+            id: 'damage-watch', emoji: '🔧', label: () => __('columnConfig.presetDamageWatch'),
             visible: ['tyre-info', 'tyre-compound', 'damage', 'warns-pens']
         },
         {
-            id: 'compact', emoji: '📱', label: 'Compact',
+            id: 'compact', emoji: '📱', label: () => __('columnConfig.presetCompact'),
             visible: ['tyre-info', 'tyre-compound', 'last-lap']
         },
     ];

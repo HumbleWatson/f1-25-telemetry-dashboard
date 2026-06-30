@@ -305,11 +305,11 @@ class RaceTableRowPopulator {
 
     #formatTyreWearText(currTyreWearData) {
         if (!currTyreWearData) {
-            return "N/A";
+            return __("common.na");
         }
 
         if (!this.isTelemetryPublic) {
-            return "RESTRICTED";
+            return __("common.restricted");
         }
 
         if (g_pref_tyreWearAverageFormat) {
@@ -341,15 +341,15 @@ class RaceTableRowPopulator {
 
     #addTyreAgeRow(cell, tyreInfo) {
         const secondRow = document.createElement("div");
-        secondRow.textContent = `${tyreInfo["tyre-age"]} lap(s) (${tyreInfo["num-pitstops"]} pit)`;
+        secondRow.textContent = `${tyreInfo["tyre-age"]} ${__("common.laps")} (${tyreInfo["num-pitstops"]} ${__("common.pit")})`;
         cell.appendChild(secondRow);
     }
 
     #addPitRejoinRow(cell, tyreInfo) {
         const thirdRow = document.createElement("div");
         const rejoin = tyreInfo["pit-rejoin-position"];
-        const rejoinText = (rejoin !== null && rejoin !== undefined) ? `P${rejoin}` : "N/A";
-        thirdRow.textContent = `Pit rejoin: ${rejoinText}`;
+        const rejoinText = (rejoin !== null && rejoin !== undefined) ? `P${rejoin}` : __("common.na");
+        thirdRow.textContent = __("raceTable.pitRejoin", { position: rejoinText });
         cell.appendChild(thirdRow);
     }
 
@@ -402,7 +402,7 @@ class RaceTableRowPopulator {
         const shouldHidePredictionColumn = false;
         if (!shouldHidePredictionColumn) {
             if (predictionData.length === 0) {
-                this.row.insertCell().textContent = "N/A";
+                this.row.insertCell().textContent = __("common.na");
             } else {
                 const predictionContent = []
                 predictionData.forEach((prediction, index) => {
@@ -430,22 +430,22 @@ class RaceTableRowPopulator {
         const cell = this.row.insertCell();
 
         const damageItems = [
-            { label: "FL", value: damageInfo["fl-wing-damage"] },
-            { label: "FR", value: damageInfo["fr-wing-damage"] },
+            { label: __("raceTable.damageFl"), value: damageInfo["fl-wing-damage"] },
+            { label: __("raceTable.damageFr"), value: damageInfo["fr-wing-damage"] },
         ];
 
         if (g_pref_simDamageEnabled) {
             damageItems.push(
-                { label: "RW",  value: damageInfo["rear-wing-damage"] },
-                { label: "Floor", value: damageInfo["floor-damage"] },
-                { label: "Diff", value: damageInfo["diffuser-damage"] },
-                { label: "SP",  value: damageInfo["sidepod-damage"] }
+                { label: __("raceTable.damageRw"), value: damageInfo["rear-wing-damage"] },
+                { label: __("raceTable.damageFloor"), value: damageInfo["floor-damage"] },
+                { label: __("raceTable.damageDiff"), value: damageInfo["diffuser-damage"] },
+                { label: __("raceTable.damageSp"), value: damageInfo["sidepod-damage"] }
             );
         }
 
         damageItems.forEach(item => {
             const row = document.createElement("div");
-            const valueText = item.value == null ? "N/A" : formatFloat(item.value) + "%";
+            const valueText = item.value == null ? __("common.na") : formatFloat(item.value) + "%";
             row.textContent = item.label + ": " + valueText;
             cell.appendChild(row);
         });
@@ -465,9 +465,9 @@ class RaceTableRowPopulator {
             ? formatFloat(fuelInfo["fuel-in-tank"])
             : "N/A";
           return [
-            `Last: ${lastLapFuelUsed}`,
-            `Rate: ${currFuelRate}`,
-            `Rem: ${remainingFuel}`
+            __("raceTable.lastLapPrefix", { value: lastLapFuelUsed }),
+            __("raceTable.fuelRatePrefix", { value: currFuelRate }),
+            __("raceTable.fuelRemPrefix", { value: remainingFuel })
           ];
         } else {
           const targetFuelRateAverage = fuelInfo["target-fuel-rate-average"] !== null
@@ -489,9 +489,9 @@ class RaceTableRowPopulator {
           const laps = g_pref_fuelSurplusLapsPng ? surplusLapsPng : surplusLapsGame;
           const tgt = g_pref_fuelTargetAverageFormat ? targetFuelRateAverage : targetFuelRateNextLap;
           return [
-            `Last: ${lastLapFuelUsed}`,
-            `Laps: ${laps}`,
-            `Tgt: ${tgt}`
+            __("raceTable.lastLapPrefix", { value: lastLapFuelUsed }),
+            __("raceTable.fuelLapsPrefix", { value: laps }),
+            __("raceTable.fuelTgtPrefix", { value: tgt })
           ];
         }
     }
@@ -522,7 +522,7 @@ class RaceTableRowPopulator {
             cell.style.verticalAlign = "middle";
 
             const message = document.createElement("div");
-            message.textContent = "Driver has telemetry set to Restricted";
+            message.textContent = __("raceTable.telemetryRestricted");
             message.style.fontStyle = "italic";
             cell.appendChild(message);
         }

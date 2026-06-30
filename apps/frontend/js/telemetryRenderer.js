@@ -440,7 +440,7 @@ class TelemetryRenderer {
       span.classList.add('preset-emoji');
       span.textContent = preset.emoji;
       btn.appendChild(span);
-      btn.appendChild(document.createTextNode(preset.label));
+      btn.appendChild(document.createTextNode(preset.label()));
       btn.addEventListener('click', () => {
         this.columnConfig.applyPreset(preset.id);
         const togglesContainer = document.getElementById('column-toggles-container');
@@ -508,7 +508,7 @@ class TelemetryRenderer {
       input.type = 'checkbox';
       input.role = 'switch';
       input.id = `col-toggle-${group.id}`;
-      input.setAttribute('aria-label', `Toggle ${group.label} column visibility`);
+      input.setAttribute('aria-label', `Toggle ${group.label()} column visibility`);
 
       if (group.children) {
         const state = this.columnConfig.getParentCheckState(group.id);
@@ -530,7 +530,7 @@ class TelemetryRenderer {
       const label = document.createElement('label');
       label.classList.add('form-check-label');
       label.htmlFor = `col-toggle-${group.id}`;
-      label.textContent = group.label;
+      label.textContent = group.label();
 
       div.appendChild(input);
       div.appendChild(label);
@@ -548,7 +548,7 @@ class TelemetryRenderer {
           childInput.role = 'switch';
           childInput.id = `col-toggle-${child.id}`;
           childInput.checked = this.columnConfig.isUserEnabled(child.id);
-          childInput.setAttribute('aria-label', `Toggle ${child.label} visibility`);
+          childInput.setAttribute('aria-label', `Toggle ${child.label()} visibility`);
 
           childInput.addEventListener('change', () => {
             this.columnConfig.setUserVisible(child.id, childInput.checked);
@@ -560,7 +560,7 @@ class TelemetryRenderer {
           const childLabel = document.createElement('label');
           childLabel.classList.add('form-check-label');
           childLabel.htmlFor = `col-toggle-${child.id}`;
-          childLabel.textContent = child.label;
+          childLabel.textContent = child.label();
 
           childDiv.appendChild(childInput);
           childDiv.appendChild(childLabel);
