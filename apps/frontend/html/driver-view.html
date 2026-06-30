@@ -511,6 +511,15 @@
             Refresh the page after saving to see the changes.
           </div>
         {% endif %}
+        <div class="mb-3">
+          <label class="form-label">Language / 语言</label>
+          <div>
+            <select id="langSelect" class="form-select">
+              <option value="en">English</option>
+              <option value="zh-CN">简体中文</option>
+            </select>
+          </div>
+        </div>
         <div class="settings-panel-links">
           <a href="https://www.pitsngiggles.com" target="_blank" rel="noopener noreferrer">Download latest version</a>
         </div>
@@ -639,6 +648,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename='js/preferences.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/i18n.js') }}"></script>
     <script src="{{ url_for('static', filename='js/socketio.js') }}"></script>
     <script src="{{ url_for('static', filename='js/utils.js') }}"></script>
     <script src="{{ url_for('static', filename='js/pitRejoin.js') }}"></script>
@@ -666,6 +676,27 @@
       const currVer = "{{ version }}";
       console.info("Running version", currVer);
       window.SESSION_SLUG = {% if session_slug %}"{{ session_slug }}"{% else %}null{% endif %};
+    </script>
+    <script>
+      document.addEventListener('i18n:change', function () {
+        var sel = document.getElementById('langSelect');
+        if (sel && window.i18n) {
+          sel.value = window.i18n.getLang();
+        }
+      });
+      document.addEventListener('DOMContentLoaded', function () {
+        var sel = document.getElementById('langSelect');
+        if (sel && window.i18n) {
+          sel.value = window.i18n.getLang();
+          sel.addEventListener('change', function () {
+            var lang = sel.value;
+            window.i18n.setLang(lang);
+            if (typeof g_pref_lang !== 'undefined') {
+              g_pref_lang = lang;
+            }
+          });
+        }
+      });
     </script>
     <script src="{{ url_for('static', filename='js/app.js') }}"></script>
   </body>
