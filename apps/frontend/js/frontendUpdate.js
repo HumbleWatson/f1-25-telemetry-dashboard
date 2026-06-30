@@ -23,16 +23,24 @@ function textToSpeech(text, volume=g_pref_ttsVolume) {
 
 function processTyreDeltaMessage(data) {
     let messageText = "";
-    messageText += data['curr-tyre-type'] + " tyres are ";
 
     if (data['tyre-delta'] == 0) {
-        messageText += "the same as " + data['other-tyre-type'] + " tyres"; // No "by ..."
+        messageText = __("frontendUpdate.tyreDeltaSame", {
+            curr: data['curr-tyre-type'],
+            other: data['other-tyre-type']
+        });
     } else if (data['tyre-delta'] > 0) {
-        messageText += "faster than ";
-        messageText += data['other-tyre-type'] + " tyres by " + formatFloat(Math.abs(data['tyre-delta'])) + " seconds";
+        messageText = __("frontendUpdate.tyreDeltaFaster", {
+            curr: data['curr-tyre-type'],
+            other: data['other-tyre-type'],
+            delta: formatFloat(Math.abs(data['tyre-delta']))
+        });
     } else {
-        messageText += "slower than ";
-        messageText += data['other-tyre-type'] + " tyres by " + formatFloat(Math.abs(data['tyre-delta'])) + " seconds";
+        messageText = __("frontendUpdate.tyreDeltaSlower", {
+            curr: data['curr-tyre-type'],
+            other: data['other-tyre-type'],
+            delta: formatFloat(Math.abs(data['tyre-delta']))
+        });
     }
 
     console.log("received tyre delta update", data, "TTS text", messageText);

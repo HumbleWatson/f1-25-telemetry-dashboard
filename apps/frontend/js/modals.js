@@ -345,7 +345,7 @@ class ModalManager {
     const refreshButton = document.getElementById('refreshButtonRace');
 
     // Update modal title
-    modalTitle.textContent = `RACE STATS`;
+    modalTitle.textContent = __('raceStatsModal.modalTitle');
 
     // Clear existing content
     modalBody.textContent = '';

@@ -124,9 +124,9 @@ class F1TyreRecords {
 
     // Process each record type with Bootstrap icons
     const recordTypes = [
-      { key: 'highest-tyre-wear', label: 'Highest Wear', unit: '%', icon: 'bi-arrow-up-circle' },
-      { key: 'longest-tyre-stint', label: 'Longest Stint', unit: ' laps', icon: 'bi-stopwatch' },
-      { key: 'lowest-tyre-wear-per-lap', label: 'Lowest Wear/Lap', unit: '%', icon: 'bi-arrow-down-circle' }
+      { key: 'highest-tyre-wear', label: __('raceStatsModal.highestWear'), unit: '%', icon: 'bi-arrow-up-circle' },
+      { key: 'longest-tyre-stint', label: __('raceStatsModal.longestStint'), unit: ' laps', icon: 'bi-stopwatch' },
+      { key: 'lowest-tyre-wear-per-lap', label: __('raceStatsModal.lowestWearPerLap'), unit: '%', icon: 'bi-arrow-down-circle' }
     ];
 
     recordTypes.forEach(recordType => {

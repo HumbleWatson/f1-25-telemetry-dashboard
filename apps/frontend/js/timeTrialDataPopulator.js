@@ -45,11 +45,11 @@ class TimeTrialDataPopulator {
      */
     restoreComparisonCards(rivalInfo) {
         const rivalName = rivalInfo?.name;
-        const rivalTitle = rivalName ? rivalName : 'Rival Best';
+        const rivalTitle = rivalName ? rivalName : __('tt.rivalBest');
 
         const cardConfigs = [
-            { class: 'tt-personal-best', prefix: 'pb', title: 'Personal Best' },
-            { class: 'tt-session-best', prefix: 'sb', title: 'Session Best' },
+            { class: 'tt-personal-best', prefix: 'pb', title: __('tt.personalBest') },
+            { class: 'tt-session-best', prefix: 'sb', title: __('tt.sessionBest') },
             { class: 'tt-rival-best', prefix: 'rival', title: rivalTitle }
         ];
 
@@ -91,7 +91,7 @@ class TimeTrialDataPopulator {
 
         const wings = document.createElement('div');
         wings.className = 'tt-wings';
-        wings.textContent = 'Wings: ';
+        wings.textContent = __('tt.wings') + ': ';
         const wingsSpan = document.createElement('span');
         wingsSpan.id = `tt-${config.prefix}-wings`;
         wingsSpan.textContent = '50-50';
@@ -128,7 +128,7 @@ class TimeTrialDataPopulator {
             const assistSpan = document.createElement('span');
             assistSpan.className = 'tt-assist';
             assistSpan.id = `tt-${config.prefix}-${assist}`;
-            assistSpan.textContent = assist === 'tc' ? 'TC: -' : assist === 'abs' ? 'ABS: -' : 'Gears: -';
+            assistSpan.textContent = assist === 'tc' ? __('tt.tc') + ': -' : assist === 'abs' ? __('tt.abs') + ': -' : __('tt.gears') + ': -';
             assists.appendChild(assistSpan);
         });
 
@@ -164,9 +164,9 @@ class TimeTrialDataPopulator {
 
         // Get the original title from the card class
         let title = 'Feature';
-        if (card.classList.contains('tt-personal-best')) title = 'Personal Best';
-        else if (card.classList.contains('tt-session-best')) title = 'Session Best';
-        else if (card.classList.contains('tt-rival-best')) title = 'Rival Best';
+        if (card.classList.contains('tt-personal-best')) title = __('tt.personalBest');
+        else if (card.classList.contains('tt-session-best')) title = __('tt.sessionBest');
+        else if (card.classList.contains('tt-rival-best')) title = __('tt.rivalBest');
 
         // Create header with unsupported message
         const cardHeader = document.createElement('div');
@@ -183,7 +183,7 @@ class TimeTrialDataPopulator {
         mainTime.className = 'tt-main-time';
         mainTime.style.fontSize = '14px';
         mainTime.style.color = '#888';
-        mainTime.textContent = 'F1 2024+ Only';
+        mainTime.textContent = __('tt.f1_2024_only');
 
         headerContent.appendChild(titleElement);
         headerContent.appendChild(mainTime);
@@ -198,7 +198,7 @@ class TimeTrialDataPopulator {
         message.style.color = '#888';
         message.style.fontSize = '12px';
         message.style.padding = '10px';
-        message.textContent = 'This feature requires F1 2024 or later packet format';
+        message.textContent = __('tt.feature_requires_2024');
 
         cardBody.appendChild(message);
         card.appendChild(cardHeader);
@@ -334,9 +334,9 @@ class TimeTrialDataPopulator {
         if (s1Element) s1Element.textContent = data['sector-1-time-str'] || '--:---';
         if (s2Element) s2Element.textContent = data['sector-2-time-str'] || '--:---';
         if (s3Element) s3Element.textContent = data['sector-3-time-str'] || '--:---';
-        if (tcElement) tcElement.textContent = `TC: ${this.getAssistText(data['traction-control'])}`;
-        if (absElement) absElement.textContent = `ABS: ${this.getAssistText(data['anti-lock-brakes'])}`;
-        if (gearsElement) gearsElement.textContent = `Gears: ${this.getAssistText(data['gearbox-assist'])}`;
+        if (tcElement) tcElement.textContent = `${__('tt.tc')}: ${this.getAssistText(data['traction-control'])}`;
+        if (absElement) absElement.textContent = `${__('tt.abs')}: ${this.getAssistText(data['anti-lock-brakes'])}`;
+        if (gearsElement) gearsElement.textContent = `${__('tt.gears')}: ${this.getAssistText(data['gearbox-assist'])}`;
 
         const wingsElement = document.getElementById(`tt-${prefix}-wings`);
         if (wingsElement && setup && setup['is-valid'] && data['is-valid']) {
@@ -370,7 +370,7 @@ class TimeTrialDataPopulator {
             if (s2Element) s2Element.textContent = s2Str;
             if (s3Element) s3Element.textContent = s3Str;
         } else {
-            if (titleElement) titleElement.textContent = 'IRL Pole Lap';
+            if (titleElement) titleElement.textContent = __('tt.irlPoleLap');
             if (timeElement) timeElement.textContent = '--:--:---';
             if (s1Element) s1Element.textContent = '--:---';
             if (s2Element) s2Element.textContent = '--:---';
@@ -408,7 +408,7 @@ class TimeTrialDataPopulator {
         const irlS3El = document.getElementById('tt-irl-s3');
         const irlDetailsAssistsEl = document.getElementById('tt-irl-details-assists');
 
-        if (irlTitleEl) irlTitleEl.textContent = 'IRL Pole Lap';
+        if (irlTitleEl) irlTitleEl.textContent = __('tt.irlPoleLap');
         if (irlTimeEl) irlTimeEl.textContent = '--:--:---';
         if (irlS1El) irlS1El.textContent = '--:---';
         if (irlS2El) irlS2El.textContent = '--:---';
@@ -464,9 +464,9 @@ class TimeTrialDataPopulator {
             if (s1El) s1El.textContent = '--:---';
             if (s2El) s2El.textContent = '--:---';
             if (s3El) s3El.textContent = '--:---';
-            if (tcEl) tcEl.textContent = 'TC: -';
-            if (absEl) absEl.textContent = 'ABS: -';
-            if (gearsEl) gearsEl.textContent = 'Gears: -';
+            if (tcEl) tcEl.textContent = __('tt.tc') + ': -';
+            if (absEl) absEl.textContent = __('tt.abs') + ': -';
+            if (gearsEl) gearsEl.textContent = __('tt.gears') + ': -';
             if (wingsEl) wingsEl.textContent = '-';
         });
 

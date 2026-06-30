@@ -39,8 +39,22 @@
       "index": "Index",
       "event": "Event",
       "track": "Track",
+      "sector": "Sector",
+      "lapTime": "Lap Time",
       "lapPercent": "Lap %",
-      "id": "ID"
+      "id": "ID",
+      "team": "Team",
+      "lapNumber": "Lap Number",
+      "records": "Track Records",
+      "fastestLap": "Fastest Lap",
+      "bestSectors": "Fastest Lap & Sector Times",
+      "noFastestLapData": "No fastest lap data available",
+      "unknownDriver": "Unknown Driver",
+      "noDataShort": "No Data",
+      "unknown": "Unknown",
+      "loadingRecords": "Loading records...",
+      "errorLoadingRecords": "Error loading records",
+      "errorUpdatingRecords": "Error updating records"
     },
     "toast": {
       "bestLapFormatChanged": "Best Lap Format Changed to {format}",
@@ -210,12 +224,21 @@
       "speedTrapRecords": "Speed Trap Records",
       "raceControlMessages": "Race Control Messages",
       "showTla": "Show TLA",
+      "tlaTooltip": "Toggle between Three Letter Abbreviation (TLA) and full driver names on the chart.",
+      "modalTitle": "Race Stats",
       "noCustomMarkers": "Custom Markers data not available",
       "noPositionHistory": "Position History data not available",
       "noSpeedTrapData": "Speed Trap Records data not available",
       "noRaceControlData": "Race Control Messages data not available",
       "noStintHistoryData": "Tyre stint history data not available",
-      "tlaTooltip": "Toggle between Three Letter Abbreviation (TLA) and full driver names on the chart."
+      "longestStint": "Longest Stint",
+      "lowestWearPerLap": "Least Tyre Wear Per Lap",
+      "highestWear": "Highest Tyre Wear",
+      "speedTrapRecordsTitle": "Speed Trap Records",
+      "gridLoadError": "Race Control Messages grid could not be loaded.",
+      "xLabelDriver": "Driver",
+      "yLabelLapNumber": "Lap number",
+      "yLabelPosition": "Position"
     },
     "frontendUpdate": {
       "tyreDeltaSame": "{curr} tyres are the same as {other} tyres",
@@ -239,7 +262,19 @@
       "wings": "Wings",
       "tc": "TC",
       "abs": "ABS",
-      "gears": "Gears"
+      "gears": "Gears",
+      "f1_2024_only": "F1 2024+ Only",
+      "feature_requires_2024": "This feature requires F1 2024 or later packet format"
+    },
+    "telemetry": {
+      "pitsAndGiggles": "PITS N' GIGGLES",
+      "connected": "Connected to F1 game. Waiting for session start ...",
+      "waiting": "Waiting for F1 game UDP telemetry data ..."
+    },
+    "columnPreset": {
+      "myLayout": "My Layout",
+      "saveAsMyLayout": "Save as My Layout",
+      "deleteCustomLayout": "Delete custom layout"
     }
   },
   "zh-CN": {
@@ -282,8 +317,22 @@
       "index": "序号",
       "event": "事件",
       "track": "赛道",
+      "sector": "赛段",
+      "lapTime": "圈时",
       "lapPercent": "圈%",
-      "id": "编号"
+      "id": "编号",
+      "team": "车队",
+      "lapNumber": "圈数",
+      "records": "赛道纪录",
+      "fastestLap": "最快圈",
+      "bestSectors": "最快圈与赛段时间",
+      "noFastestLapData": "无最快圈数据",
+      "unknownDriver": "未知车手",
+      "noDataShort": "无数据",
+      "unknown": "未知",
+      "loadingRecords": "加载纪录中...",
+      "errorLoadingRecords": "加载纪录错误",
+      "errorUpdatingRecords": "更新纪录错误"
     },
     "toast": {
       "bestLapFormatChanged": "最快圈格式已切换为{format}",
@@ -453,12 +502,21 @@
       "speedTrapRecords": "测速点纪录",
       "raceControlMessages": "赛事控制消息",
       "showTla": "显示缩写",
+      "tlaTooltip": "在图表上切换三字母缩写(TLA)和完整车手名称。",
+      "modalTitle": "比赛统计",
       "noCustomMarkers": "自定义标记数据不可用",
       "noPositionHistory": "位置历史数据不可用",
       "noSpeedTrapData": "测速点纪录数据不可用",
       "noRaceControlData": "赛事控制消息数据不可用",
       "noStintHistoryData": "轮胎赛段历史数据不可用",
-      "tlaTooltip": "在图表上切换三字母缩写(TLA)和完整车手名称。"
+      "longestStint": "最长赛段",
+      "lowestWearPerLap": "每圈最低磨损",
+      "highestWear": "最高磨损",
+      "speedTrapRecordsTitle": "测速点纪录",
+      "gridLoadError": "赛事控制消息网格无法加载。",
+      "xLabelDriver": "车手",
+      "yLabelLapNumber": "圈号",
+      "yLabelPosition": "名次"
     },
     "frontendUpdate": {
       "tyreDeltaSame": "{curr}轮胎与{other}轮胎相同",
@@ -482,7 +540,19 @@
       "wings": "翼片",
       "tc": "牵引力控制",
       "abs": "防抱死",
-      "gears": "档位"
+      "gears": "档位",
+      "f1_2024_only": "仅限 F1 2024+",
+      "feature_requires_2024": "此功能需要 F1 2024 或更高版本的数据包格式"
+    },
+    "telemetry": {
+      "pitsAndGiggles": "PITS N' GIGGLES",
+      "connected": "已连接到 F1 游戏。等待会话开始...",
+      "waiting": "等待 F1 游戏 UDP 遥测数据..."
+    },
+    "columnPreset": {
+      "myLayout": "我的布局",
+      "saveAsMyLayout": "保存为我的布局",
+      "deleteCustomLayout": "删除自定义布局"
     }
   }
 }

@@ -255,7 +255,7 @@ class TelemetryRenderer {
     // Clear any existing content in the span
     trackNameContainer.textContent = "";
     if ("---" === trackName) {
-      this.trackName.textContent = "PITS N' GIGGLES";
+      this.trackName.textContent = __('telemetry.pitsAndGiggles');
     } else {
       // Create the first div for the track name
       const trackNameDiv = document.createElement("div");
@@ -456,7 +456,7 @@ class TelemetryRenderer {
       if (this.columnConfig.activePreset === 'custom') {
         customBtn.classList.add('active');
       }
-      customBtn.innerHTML = `<span class="preset-emoji">🎯</span>My Layout`;
+      customBtn.innerHTML = `<span class="preset-emoji">🎯</span>` + __('columnPreset.myLayout');
       customBtn.addEventListener('click', () => {
         this.columnConfig.applyPreset('custom');
         const togglesContainer = document.getElementById('column-toggles-container');
@@ -467,7 +467,7 @@ class TelemetryRenderer {
       const deleteBtn = document.createElement('button');
       deleteBtn.classList.add('preset-delete');
       deleteBtn.innerHTML = '✕';
-      deleteBtn.title = 'Delete custom layout';
+      deleteBtn.title = __('columnPreset.deleteCustomLayout');
       deleteBtn.addEventListener('click', (e) => {
         e.stopPropagation();
         this.columnConfig.deleteCustomPreset();
@@ -486,7 +486,7 @@ class TelemetryRenderer {
 
     const btn = document.createElement('button');
     btn.classList.add('save-custom-preset-btn');
-    btn.textContent = '💾 Save as My Layout';
+    btn.textContent = '💾 ' + __('columnPreset.saveAsMyLayout');
     btn.addEventListener('click', () => {
       this.columnConfig.saveCustomPreset();
       const presetsContainer = document.getElementById('preset-buttons-container');
@@ -628,8 +628,8 @@ class TelemetryRenderer {
 
     // update text
     this.statusText.textContent = connected
-      ? 'Connected to F1 game. Waiting for session start ...'
-      : 'Waiting for F1 game UDP telemetry data ...'
+      ? __('telemetry.connected')
+      : __('telemetry.waiting')
   }
 
 }

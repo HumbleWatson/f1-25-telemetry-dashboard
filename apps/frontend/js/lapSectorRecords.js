@@ -13,11 +13,11 @@ class F1LapSectorRecords {
   showLoading() {
     this.container.textContent = '';
     const loadingDiv = this.createElement('div', 'f1-lapsec-records-loading');
-    loadingDiv.textContent = 'Loading records...';
+    loadingDiv.textContent = __('common.loadingRecords');
     this.container.appendChild(loadingDiv);
   }
 
-  showError(message = 'Error loading records') {
+  showError(message = __('common.errorLoadingRecords')) {
     this.container.textContent = '';
     const errorDiv = this.createElement('div', 'f1-lapsec-records-error');
     errorDiv.textContent = message;
@@ -42,8 +42,8 @@ class F1LapSectorRecords {
   createHeader() {
     const header = this.createElement('div', 'f1-lapsec-records-header');
 
-    const title = this.createElement('h1', 'f1-lapsec-records-title', 'Track Records');
-    const subtitle = this.createElement('p', 'f1-lapsec-records-subtitle', 'Fastest Lap & Sector Times');
+    const title = this.createElement('h1', 'f1-lapsec-records-title', __('common.records'));
+    const subtitle = this.createElement('p', 'f1-lapsec-records-subtitle', __('common.bestSectors'));
 
     header.appendChild(title);
     header.appendChild(subtitle);
@@ -56,12 +56,12 @@ class F1LapSectorRecords {
 
     const sectionTitle = this.createElement('div', 'f1-lapsec-records-section-title');
     const icon = this.createElement('div', 'f1-lapsec-records-section-icon', '🏆');
-    const titleText = this.createElement('span', '', 'Fastest Lap');
+    const titleText = this.createElement('span', '', __('common.fastestLap'));
     sectionTitle.appendChild(icon);
     sectionTitle.appendChild(titleText);
 
     if (!this.data.lap) {
-      const noData = this.createElement('div', 'f1-lapsec-records-no-data', 'No fastest lap data available');
+      const noData = this.createElement('div', 'f1-lapsec-records-no-data', __('common.noFastestLapData'));
       section.appendChild(sectionTitle);
       section.appendChild(noData);
       return section;
@@ -71,7 +71,7 @@ class F1LapSectorRecords {
 
     const teamNameStr = getTeamName(this.data.lap['team-id']);
     const driverDetails = this.createElement('div', 'f1-lapsec-records-driver-details');
-    const driverName = this.createElement('h3', '', this.data.lap['driver-name'] || 'Unknown Driver');
+    const driverName = this.createElement('h3', '', this.data.lap['driver-name'] || __('common.unknownDriver'));
     const teamName = this.createElement('p', '', teamNameStr);
     driverDetails.appendChild(driverName);
     driverDetails.appendChild(teamName);
@@ -79,7 +79,7 @@ class F1LapSectorRecords {
     const lapInfo = this.createElement('div', 'f1-lapsec-records-lap-info');
     const time = this.createElement('p', 'f1-lapsec-records-time', this.formatTime(this.data.lap['time-str']));
     const lapNumber = this.createElement('p', 'f1-lapsec-records-lap-number',
-      this.data.lap['lap-number'] ? `Lap ${this.data.lap['lap-number']}` : 'Lap --');
+      this.data.lap['lap-number'] ? `${__('common.lap')} ${this.data.lap['lap-number']}` : `${__('common.lap')} --`);
     lapInfo.appendChild(time);
     lapInfo.appendChild(lapNumber);
 
@@ -89,20 +89,20 @@ class F1LapSectorRecords {
     const stats = this.createElement('div', 'f1-lapsec-records-stats');
 
     const teamStat = this.createElement('div', 'f1-lapsec-records-stat');
-    const teamLabel = this.createElement('p', 'f1-lapsec-records-stat-label', 'Team');
-    const teamValue = this.createElement('p', 'f1-lapsec-records-stat-value', teamNameStr || 'Unknown');
+    const teamLabel = this.createElement('p', 'f1-lapsec-records-stat-label', __('common.team'));
+    const teamValue = this.createElement('p', 'f1-lapsec-records-stat-value', teamNameStr || __('common.unknown'));
     teamStat.appendChild(teamLabel);
     teamStat.appendChild(teamValue);
 
     const lapStat = this.createElement('div', 'f1-lapsec-records-stat');
-    const lapLabel = this.createElement('p', 'f1-lapsec-records-stat-label', 'Lap');
+    const lapLabel = this.createElement('p', 'f1-lapsec-records-stat-label', __('common.lap'));
     const lapValue = this.createElement('p', 'f1-lapsec-records-stat-value',
       this.data.lap['lap-number'] ? this.data.lap['lap-number'].toString() : '--');
     lapStat.appendChild(lapLabel);
     lapStat.appendChild(lapValue);
 
     const timeStat = this.createElement('div', 'f1-lapsec-records-stat');
-    const timeLabel = this.createElement('p', 'f1-lapsec-records-stat-label', 'Time');
+    const timeLabel = this.createElement('p', 'f1-lapsec-records-stat-label', __('common.time'));
     const timeValue = this.createElement('p', 'f1-lapsec-records-stat-value', this.formatTime(this.data.lap['time-str']));
     timeStat.appendChild(timeLabel);
     timeStat.appendChild(timeValue);
@@ -129,7 +129,7 @@ class F1LapSectorRecords {
       header.appendChild(label);
       header.appendChild(time);
 
-      const driver = this.createElement('p', 'f1-lapsec-records-sector-driver', 'No Data');
+      const driver = this.createElement('p', 'f1-lapsec-records-sector-driver', __('common.noDataShort'));
       const team = this.createElement('p', 'f1-lapsec-records-sector-team', '--');
 
       sector.appendChild(header);
@@ -145,7 +145,7 @@ class F1LapSectorRecords {
 
     const teamNameStr = getTeamName(sectorData['team-id']);
     const driver = this.createElement('p', 'f1-lapsec-records-sector-driver',
-      sectorData['driver-name'] || 'Unknown Driver');
+      sectorData['driver-name'] || __('common.unknownDriver'));
     const team = this.createElement('p', 'f1-lapsec-records-sector-team', teamNameStr);
 
     sector.appendChild(header);
@@ -204,7 +204,7 @@ class F1LapSectorRecords {
       this.render();
     } catch (error) {
       console.error('Error updating F1 records:', error);
-      this.showError('Error updating records');
+      this.showError(__('common.errorUpdatingRecords'));
     }
   }
 
