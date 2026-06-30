@@ -48,7 +48,7 @@ class ModalManager {
           })
           .catch(err => {
               console.error("Fetch error:", err);
-              showToast("Failed to fetch race info");
+              showToast(__("toast.failedFetchRaceInfo"));
           });
       });
     }
@@ -312,7 +312,7 @@ class ModalManager {
     const saveBtn = document.getElementById('saveSettings');
     if (saveBtn) {
       const origText = saveBtn.textContent;
-      saveBtn.textContent = '✓ Saved!';
+      saveBtn.textContent = '✓ ' + __("common.saved");
       setTimeout(() => { saveBtn.textContent = origText; }, 1500);
     }
 

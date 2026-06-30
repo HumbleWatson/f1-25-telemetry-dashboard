@@ -235,26 +235,31 @@ function savePreferences() {
 }
 
 function updateAllTooltips() {
-
-    updateTooltip("best-lap-th", `Click to toggle between absolute and relative format. Current format is ${
-                                                    (g_pref_bestLapAbsoluteFormat) ? ("Absolute") : ("Relative")}`);
-    updateTooltip("last-lap-th", `Click to toggle between absolute and relative format. Current format is ${
-                                                    (g_pref_lastLapAbsoluteFormat) ? ("Absolute") : ("Relative")}`);
-    updateTooltip("delta-th", `Click to toggle between absolute and relative format. Current format is ${
-                                                    (!g_pref_relativeDelta) ? ("Absolute") : ("Relative")}`);
-    updateTooltip("tyre-info-th", `Click to toggle between average and max wear format. Current format is ${
-                                                    (g_pref_tyreWearAverageFormat) ? ("Average") : ("Tyre with max wear")}`);
-    updateTooltip("wear-prediction-th", `Click to toggle between average and max wear format. Current format is ${
-                                                    (g_pref_tyreWearAverageFormat) ? ("Average") : ("Tyre with max wear")}`);
+    updateTooltip("best-lap-th", __("raceTable.bestLapTooltip", {
+        format: g_pref_bestLapAbsoluteFormat ? __("toast.absolute") : __("toast.relative")
+    }));
+    updateTooltip("last-lap-th", __("raceTable.lastLapTooltip", {
+        format: g_pref_lastLapAbsoluteFormat ? __("toast.absolute") : __("toast.relative")
+    }));
+    updateTooltip("delta-th", __("raceTable.deltaTooltip", {
+        format: !g_pref_relativeDelta ? __("toast.absolute") : __("toast.relative")
+    }));
+    updateTooltip("tyre-info-th", __("raceTable.tyreInfoTooltip", {
+        format: g_pref_tyreWearAverageFormat ? __("toast.average") : __("toast.max")
+    }));
+    updateTooltip("wear-prediction-th", __("raceTable.wearPredictionTooltip", {
+        format: g_pref_tyreWearAverageFormat ? __("toast.average") : __("toast.max")
+    }));
     if (g_pref_showFuelTarget) {
-        updateTooltip("fuel-info-th", `Click to toggle between target fuel format. Current format is ${
-            (g_pref_fuelTargetAverageFormat) ? ("Average target fuel rate") :
-            ("Fuel usage target for next lap")}`);
+        updateTooltip("fuel-info-th", __("raceTable.fuelInfoTooltip", {
+            format: g_pref_fuelTargetAverageFormat ? __("toast.averageTargetFuelRate") : __("toast.fuelUsageTargetNextLap")
+        }));
     } else {
-        updateTooltip("fuel-info-th", `Target fuel rate is disabled. Enable it via the settings`);
+        updateTooltip("fuel-info-th", __("raceTable.fuelInfoTooltipDisabled"));
     }
-    updateTooltip("tt-vmax-th", `Top Speed. Click to toggle between km/h and mph. Current format is ${
-                                                    (g_pref_speedUnitMetric) ? ("km/h") : ("mph")}`);
+    updateTooltip("tt-vmax-th", __("raceTable.vmaxTooltip", {
+        format: g_pref_speedUnitMetric ? __("toast.kmh") : __("toast.mph")
+    }));
 }
 
 function updateTooltip(id, newText) {
